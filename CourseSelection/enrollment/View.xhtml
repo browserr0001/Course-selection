@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEnrollmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: red" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEnrollmentLabel_enrollmentid}"/>
+                    <h:outputText value="#{enrollmentController.selected.enrollmentid}" title="#{bundle.ViewEnrollmentTitle_enrollmentid}"/>
+                    <h:outputText value="#{bundle.ViewEnrollmentLabel_enrollmentyear}"/>
+                    <h:outputText value="#{enrollmentController.selected.enrollmentyear}" title="#{bundle.ViewEnrollmentTitle_enrollmentyear}"/>
+                    <h:outputText value="#{bundle.ViewEnrollmentLabel_enrollmentsemester}"/>
+                    <h:outputText value="#{enrollmentController.selected.enrollmentsemester}" title="#{bundle.ViewEnrollmentTitle_enrollmentsemester}"/>
+                    <h:outputText value="#{bundle.ViewEnrollmentLabel_studentgrade}"/>
+                    <h:outputText value="#{enrollmentController.selected.studentgrade}" title="#{bundle.ViewEnrollmentTitle_studentgrade}"/>
+                    <h:outputText value="#{bundle.ViewEnrollmentLabel_courseid}"/>
+                    <h:outputText value="#{enrollmentController.selected.courseid}" title="#{bundle.ViewEnrollmentTitle_courseid}"/>
+                    <h:outputText value="#{bundle.ViewEnrollmentLabel_studentid}"/>
+                    <h:outputText value="#{enrollmentController.selected.studentid}" title="#{bundle.ViewEnrollmentTitle_studentid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{enrollmentController.destroyAndView}" value="#{bundle.ViewEnrollmentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link style = "color: black; font-family: monospace; font-size: 25px" outcome="Edit" value="#{bundle.ViewEnrollmentEditLink}"/>
+                <br />
+                <h:commandLink style = "color: black; font-family: monospace; font-size: 25px" action="#{enrollmentController.prepareCreate}" value="#{bundle.ViewEnrollmentCreateLink}" />
+                <br />
+                <h:commandLink style = "color: black; font-family: monospace; font-size: 25px" action="#{enrollmentController.prepareList}" value="#{bundle.ViewEnrollmentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link style = "color: black; font-family: monospace; font-size: 25px" outcome="/index" value="#{bundle.ViewEnrollmentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

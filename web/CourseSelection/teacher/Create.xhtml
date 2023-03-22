@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTeacherTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: red" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTeacherLabel_teacherid}" for="teacherid" />
+                    <h:inputText id="teacherid" value="#{teacherController.selected.teacherid}" title="#{bundle.CreateTeacherTitle_teacherid}" required="true" requiredMessage="#{bundle.CreateTeacherRequiredMessage_teacherid}"/>
+                    <h:outputLabel value="#{bundle.CreateTeacherLabel_teacherfirstname}" for="teacherfirstname" />
+                    <h:inputText id="teacherfirstname" value="#{teacherController.selected.teacherfirstname}" title="#{bundle.CreateTeacherTitle_teacherfirstname}" required="true" requiredMessage="#{bundle.CreateTeacherRequiredMessage_teacherfirstname}"/>
+                    <h:outputLabel value="#{bundle.CreateTeacherLabel_teacherlastname}" for="teacherlastname" />
+                    <h:inputText id="teacherlastname" value="#{teacherController.selected.teacherlastname}" title="#{bundle.CreateTeacherTitle_teacherlastname}" required="true" requiredMessage="#{bundle.CreateTeacherRequiredMessage_teacherlastname}"/>
+                    <h:outputLabel value="#{bundle.CreateTeacherLabel_teacherdepartmentname}" for="teacherdepartmentname" />
+                    <h:inputText id="teacherdepartmentname" value="#{teacherController.selected.teacherdepartmentname}" title="#{bundle.CreateTeacherTitle_teacherdepartmentname}" required="true" requiredMessage="#{bundle.CreateTeacherRequiredMessage_teacherdepartmentname}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink style = "color: black; font-family: monospace; font-size: 25px" action="#{teacherController.create}" value="#{bundle.CreateTeacherSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink style = "color: black; font-family: monospace; font-size: 25px" action="#{teacherController.prepareList}" value="#{bundle.CreateTeacherShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link style = "color: black; font-family: monospace; font-size: 25px" outcome="/index" value="#{bundle.CreateTeacherIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

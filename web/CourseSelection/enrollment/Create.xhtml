@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEnrollmentTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: red" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEnrollmentLabel_enrollmentid}" for="enrollmentid" />
+                    <h:inputText id="enrollmentid" value="#{enrollmentController.selected.enrollmentid}" title="#{bundle.CreateEnrollmentTitle_enrollmentid}" required="true" requiredMessage="#{bundle.CreateEnrollmentRequiredMessage_enrollmentid}"/>
+                    <h:outputLabel value="#{bundle.CreateEnrollmentLabel_enrollmentyear}" for="enrollmentyear" />
+                    <h:inputText id="enrollmentyear" value="#{enrollmentController.selected.enrollmentyear}" title="#{bundle.CreateEnrollmentTitle_enrollmentyear}" required="true" requiredMessage="#{bundle.CreateEnrollmentRequiredMessage_enrollmentyear}"/>
+                    <h:outputLabel value="#{bundle.CreateEnrollmentLabel_enrollmentsemester}" for="enrollmentsemester" />
+                    <h:inputText id="enrollmentsemester" value="#{enrollmentController.selected.enrollmentsemester}" title="#{bundle.CreateEnrollmentTitle_enrollmentsemester}" required="true" requiredMessage="#{bundle.CreateEnrollmentRequiredMessage_enrollmentsemester}"/>
+                    <h:outputLabel value="#{bundle.CreateEnrollmentLabel_studentgrade}" for="studentgrade" />
+                    <h:inputText id="studentgrade" value="#{enrollmentController.selected.studentgrade}" title="#{bundle.CreateEnrollmentTitle_studentgrade}" />
+                    <h:outputLabel value="#{bundle.CreateEnrollmentLabel_courseid}" for="courseid" />
+                    <h:selectOneMenu id="courseid" value="#{enrollmentController.selected.courseid}" title="#{bundle.CreateEnrollmentTitle_courseid}" required="true" requiredMessage="#{bundle.CreateEnrollmentRequiredMessage_courseid}">
+                        <f:selectItems value="#{courseController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEnrollmentLabel_studentid}" for="studentid" />
+                    <h:selectOneMenu id="studentid" value="#{enrollmentController.selected.studentid}" title="#{bundle.CreateEnrollmentTitle_studentid}" required="true" requiredMessage="#{bundle.CreateEnrollmentRequiredMessage_studentid}">
+                        <f:selectItems value="#{studentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink style = "color: black; font-family: monospace; font-size: 25px" action="#{enrollmentController.create}" value="#{bundle.CreateEnrollmentSaveLink}"/> 
+                <br />
+                <br />
+                <h:commandLink style = "color: black; font-family: monospace; font-size: 25px" action="#{enrollmentController.prepareList}" value="#{bundle.CreateEnrollmentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link style = "color: black; font-family: monospace; font-size: 25px" outcome="/index" value="#{bundle.CreateEnrollmentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

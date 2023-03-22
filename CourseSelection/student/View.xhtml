@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStudentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: red" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewStudentLabel_studentid}"/>
+                    <h:outputText value="#{studentController.selected.studentid}" title="#{bundle.ViewStudentTitle_studentid}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_studentfirstname}"/>
+                    <h:outputText value="#{studentController.selected.studentfirstname}" title="#{bundle.ViewStudentTitle_studentfirstname}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_studentlastname}"/>
+                    <h:outputText value="#{studentController.selected.studentlastname}" title="#{bundle.ViewStudentTitle_studentlastname}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_studentbday}"/>
+                    <h:outputText value="#{studentController.selected.studentbday}" title="#{bundle.ViewStudentTitle_studentbday}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewStudentLabel_studentmajor}"/>
+                    <h:outputText value="#{studentController.selected.studentmajor}" title="#{bundle.ViewStudentTitle_studentmajor}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_studentgender}"/>
+                    <h:outputText value="#{studentController.selected.studentgender}" title="#{bundle.ViewStudentTitle_studentgender}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_studentgpa}"/>
+                    <h:outputText value="#{studentController.selected.studentgpa}" title="#{bundle.ViewStudentTitle_studentgpa}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{studentController.destroyAndView}" value="#{bundle.ViewStudentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link style = "color: black; font-family: monospace; font-size: 25px" outcome="Edit" value="#{bundle.ViewStudentEditLink}"/>
+                <br />
+                <h:commandLink style = "color: black; font-family: monospace; font-size: 25px" action="#{studentController.prepareCreate}" value="#{bundle.ViewStudentCreateLink}" />
+                <br />
+                <h:commandLink style = "color: black; font-family: monospace; font-size: 25px" action="#{studentController.prepareList}" value="#{bundle.ViewStudentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link style = "color: black; font-family: monospace; font-size: 25px" outcome="/index" value="#{bundle.ViewStudentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
